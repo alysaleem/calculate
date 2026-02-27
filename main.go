@@ -23,7 +23,7 @@ func calculate(e string) (int, error) {
 func evaluateExpression(e string, index int) (int, int, error) {
    leftNum := 0
    rightNum := 0
-   operator := byte('\n') // set it as invalid operator to start with.
+   operator := byte('+') // default to '+' so expressions with no explicit operator work.
    total := 0
 
    for index < len(e) {
@@ -83,9 +83,9 @@ func applyOperator(operator byte, left, right int) (int, error) {
 
 func main() {
    // Test cases
-   fmt.Println(calculate("1 + 3")) // Output: -4 <nil>
+   fmt.Println(calculate("1 + 3")) // Output: 4 <nil>
 
-   fmt.Println(calculate("10  (2 - ( 2 - 3 ))")) // Output: 0 <nil>
+   fmt.Println(calculate("10 - (2 - ( 2 - 3 ))")) // Output: 7 <nil>
 
    fmt.Println(calculate("10+1+1+1-(10+1+1+1)")) // Output: 0 <nil>
 
